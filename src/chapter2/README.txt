@@ -20,5 +20,6 @@
 ++逆置对 对 插入排序的影响（关联）
 
 2.重要习题
-习题 2.3-7（联系LeetCode题目-TwoSum）
+(1)习题 2.3-7（联系LeetCode题目-TwoSum）
 https://github.com/vonzhou/learning-java/blob/master/src/oj/leetcode/array/TwoSum.java
+(2)逆置对的个数
