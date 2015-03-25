@@ -2,29 +2,31 @@ package chapter2;
 
 
 /*
- * P 17
+ * P 22  Ï°Ìâ 2.3-2
  */
-public class MergeSort {
+public class MergeSort2 {
 	public static void merge(int[] A,int p,int q,int r){
 		int n1 = q-p+1;
 		int n2 = r-q;
-		int[] L = new int[n1+1];
-		int[] R = new int[n2+1];
+		int[] L = new int[n1];
+		int[] R = new int[n2];
 		for(int i=0; i<n1;i++)
 			L[i] = A[p+i];
 		for(int i=0;i<n2;i++)
 			R[i] = A[q+i+1];
 		
-		//ÉÚ±ø
-		L[n1] = Integer.MAX_VALUE;
-		R[n2] = Integer.MAX_VALUE;
-		
 		int i=0,j=0;
-		for(int k=p; k<=r; k++){
-			if(L[i] <= R[j])
-				A[k] = L[i++];
-			else A[k] = R[j++];
+		int k=p;
+		while(i<n1 && j<n2){
+			if(L[i] <= R[j] && i<n1)
+				A[k++] = L[i++];
+			else if(L[i] > R[j] && j<n2) 
+				A[k++] = R[j++];
 		}
+		while(i< n1)
+			A[k++] = L[i++];
+		while(j < n2)
+			A[k++] = R[j++];
  	}
 	
 	public static void mergeSort(int A[],int p, int r){

@@ -3,6 +3,7 @@ package chapter2;
 //修改归并排序  对逆置个数进行统计
 // Z这种做法是错误的 ！！！TODO
 public class CountInversions {
+	
 	public static int countInversions(int[] A, int p, int r){
 		if(p >= r)
 			return 0;
@@ -28,14 +29,23 @@ public class CountInversions {
 		R[n2] = Integer.MAX_VALUE;
 		
 		int i=0,j=0;
-		int count=0;
+		int inversions=0;
+		boolean counted = false;
 		for(int k=p; k<=r; k++){
-			if(L[i] <= R[j])
-				{A[k] = L[i++];}
-			else {A[k] = R[j++];count++;}
+			if(!counted && R[j] < L[i]){
+				inversions += n1-i+1;  // L[i...n1],R[j] all is inverse
+				counted = true;
+			}
+			if(L[i] <= R[j]){
+				A[k] = L[i++];
+			}
+			else {
+				A[k] = R[j++];
+				counted = false; // eat the first number in R 
+			}
 		}
 		
-		return count;
+		return inversions;
  	}
 	
 	
